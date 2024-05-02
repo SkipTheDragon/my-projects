@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_atoms_alerts",
+  "info": {
+    "displayName": "Alert",
+    "icon": "feather",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "text",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "bgColor": {
+      "type": "string"
+    }
+  }
+}

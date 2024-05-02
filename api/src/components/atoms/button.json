@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_atoms_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "default": "filled"
+    },
+    "svg": {
+      "type": "text",
+      "required": true
+    },
+    "url": {
+      "type": "text"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

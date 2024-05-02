@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "heroes",
+  "info": {
+    "singularName": "hero",
+    "pluralName": "heroes",
+    "displayName": "Hero",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "atoms.button"
+    },
+    "alert": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.alert"
+    }
+  }
+}
