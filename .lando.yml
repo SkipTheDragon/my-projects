@@ -1,0 +1,18 @@
+name: wyverr-projects
+recipe: mean
+config:
+  database: postgres
+  port: '3000'
+  build:
+    - cd api && yarn
+    - cd app && yarn
+tooling:
+  npx:
+    service: appserver
+services:
+  appserver:
+    scanner: false
+proxy:
+  appserver:
+    - api.lndo.site:1337
+    - app.lndo.site:3000
