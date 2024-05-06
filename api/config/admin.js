@@ -14,4 +14,6 @@ module.exports = ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
+  url: env('SERVER_URL', '/admin'),
+  serveAdminPanel: env.bool('SERVE_ADMIN_PANEL', true),
 });
