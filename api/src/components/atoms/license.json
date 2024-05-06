@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_atoms_licenses",
+  "info": {
+    "displayName": "License",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "spdx_id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

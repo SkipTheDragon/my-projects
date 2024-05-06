@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "owners",
+  "info": {
+    "singularName": "owner",
+    "pluralName": "owners",
+    "displayName": "Owner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "login": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "uid"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "html_url": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "text"
+    },
+    "hireable": {
+      "type": "boolean"
+    },
+    "public_repos": {
+      "type": "integer"
+    },
+    "public_gists": {
+      "type": "integer"
+    },
+    "followers": {
+      "type": "integer"
+    },
+    "following": {
+      "type": "integer"
+    },
+    "location": {
+      "type": "string"
+    },
+    "blog": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "joined": {
+      "type": "datetime"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}

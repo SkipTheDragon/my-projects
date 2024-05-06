@@ -1,18 +1,35 @@
-export default function () {
-    return (
-        <section>
-            <div className="relative items-center w-full py-12 mx-auto max-w-7xl">
-                <div className="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
+import {useEffect, useState} from "react";
+import axiosInstance, {endpoints} from "../functions/axiosInstance.ts";
+import {Project} from "../types/Project.ts";
+import ProjectCard from "./ProjectCard.tsx";
+import {StrapiArrayResponse} from "../types/StrapiArrayResponse.ts";
 
-                    <div className="p-6">
-                        {/*<img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src="/assets/images/placeholders/squareCard.png" alt="blog"/>*/}
-                            <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">a great header right here</h2>
-                            <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">Short length headline to use as a title.</h1>
-                            <p className="mx-auto text-base font-medium leading-relaxed text-gray-500">Free and Premium themes, UI Kit's, templates and landing pages built with Tailwind CSS, HTML &amp; Next.js.</p>
-                            <div className="mt-4">
-                                <a href="#" className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" title="read more"> Read More » </a>
-                            </div>
-                    </div>
+export default function () {
+    const [projects, setProjects] = useState<Project<false>[]>([]);
+
+    useEffect(() => {
+        axiosInstance.get<StrapiArrayResponse<Project<true>>>(endpoints.PROJECTS + '?populate=*')
+            .then(({data}) => {
+                setProjects(data.data.map((Project) => ({
+                    ...Project.attributes,
+                    repository: Project.attributes.repository.data.attributes
+                })));
+            });
+    }, []);
+
+    return (
+        <section className="container mx-auto px-4 ">
+            <div className="relative items-center w-full py-12 mx-auto max-w-7xl">
+                <div className="grid w-full grid-cols-1 gap-16 mx-auto lg:grid-cols-3">
+                    {
+                        projects.map((project, index) => (
+                            <ProjectCard key={index}
+                                         headline={project.headline ? project.headline.replaceAll('-', ' ') : project.repository.name}
+                                         header={project.repository.full_name}
+                                         thumbnail={project.thumbnail}
+                                         shortDescription={project.shortDescription ?? project.repository.description}/>
+                        ))
+                    }
                 </div>
             </div>
         </section>

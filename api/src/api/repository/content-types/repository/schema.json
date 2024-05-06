@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "repositories",
+  "info": {
+    "singularName": "repository",
+    "pluralName": "repositories",
+    "displayName": "Repository",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "html_url": {
+      "type": "text"
+    },
+    "description": {
+      "type": "string"
+    },
+    "fork": {
+      "type": "boolean"
+    },
+    "createdTime": {
+      "type": "datetime"
+    },
+    "updatedTime": {
+      "type": "datetime"
+    },
+    "pushedTime": {
+      "type": "datetime"
+    },
+    "git_url": {
+      "type": "string"
+    },
+    "ssh_url": {
+      "type": "string"
+    },
+    "clone_url": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "stargazers_count": {
+      "type": "biginteger"
+    },
+    "watchers_count": {
+      "type": "biginteger"
+    },
+    "language": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::owner.owner"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::topic.topic"
+    },
+    "license": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.license"
+    }
+  }
+}

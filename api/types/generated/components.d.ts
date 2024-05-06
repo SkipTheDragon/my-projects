@@ -34,6 +34,20 @@ export interface AtomsButton extends Schema.Component {
   };
 }
 
+export interface AtomsLicense extends Schema.Component {
+  collectionName: 'components_atoms_licenses';
+  info: {
+    displayName: 'License';
+    icon: 'crown';
+  };
+  attributes: {
+    key: Attribute.String;
+    name: Attribute.String;
+    spdx_id: Attribute.String;
+    url: Attribute.String;
+  };
+}
+
 export interface AtomsLink extends Schema.Component {
   collectionName: 'components_atoms_links';
   info: {
@@ -52,6 +66,7 @@ declare module '@strapi/types' {
     export interface Components {
       'atoms.alert': AtomsAlert;
       'atoms.button': AtomsButton;
+      'atoms.license': AtomsLicense;
       'atoms.link': AtomsLink;
     }
   }

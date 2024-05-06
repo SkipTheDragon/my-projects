@@ -11,4 +11,6 @@ export const endpoints = {
     GLOBAL_ALERT: "/global-alert",
     HERO: "/hero",
     FOOTER: "/footer",
+    REPOSITORIES: "/repositories",
+    PROJECTS: "/projects",
 }

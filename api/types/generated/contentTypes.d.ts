@@ -878,6 +878,174 @@ export interface ApiHeroHero extends Schema.SingleType {
   };
 }
 
+export interface ApiOwnerOwner extends Schema.CollectionType {
+  collectionName: 'owners';
+  info: {
+    singularName: 'owner';
+    pluralName: 'owners';
+    displayName: 'Owner';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    login: Attribute.String;
+    uid: Attribute.UID;
+    avatar_url: Attribute.String;
+    html_url: Attribute.String;
+    bio: Attribute.Text;
+    hireable: Attribute.Boolean;
+    public_repos: Attribute.Integer;
+    public_gists: Attribute.Integer;
+    followers: Attribute.Integer;
+    following: Attribute.Integer;
+    location: Attribute.String;
+    blog: Attribute.String;
+    company: Attribute.String;
+    joined: Attribute.DateTime;
+    email: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::owner.owner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::owner.owner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Project';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    repository: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'api::repository.repository'
+    >;
+    shortDescription: Attribute.String;
+    headline: Attribute.String;
+    content: Attribute.Blocks;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRepositoryRepository extends Schema.CollectionType {
+  collectionName: 'repositories';
+  info: {
+    singularName: 'repository';
+    pluralName: 'repositories';
+    displayName: 'Repository';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    full_name: Attribute.String;
+    html_url: Attribute.Text;
+    description: Attribute.String;
+    fork: Attribute.Boolean;
+    createdTime: Attribute.DateTime;
+    updatedTime: Attribute.DateTime;
+    pushedTime: Attribute.DateTime;
+    git_url: Attribute.String;
+    ssh_url: Attribute.String;
+    clone_url: Attribute.String;
+    homepage: Attribute.String;
+    stargazers_count: Attribute.BigInteger;
+    watchers_count: Attribute.BigInteger;
+    language: Attribute.String;
+    owner: Attribute.Relation<
+      'api::repository.repository',
+      'oneToOne',
+      'api::owner.owner'
+    >;
+    topics: Attribute.Relation<
+      'api::repository.repository',
+      'oneToMany',
+      'api::topic.topic'
+    >;
+    license: Attribute.Component<'atoms.license'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::repository.repository',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::repository.repository',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTopicTopic extends Schema.CollectionType {
+  collectionName: 'topics';
+  info: {
+    singularName: 'topic';
+    pluralName: 'topics';
+    displayName: 'Topic';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::topic.topic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::topic.topic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -899,6 +1067,10 @@ declare module '@strapi/types' {
       'api::footer.footer': ApiFooterFooter;
       'api::global-alert.global-alert': ApiGlobalAlertGlobalAlert;
       'api::hero.hero': ApiHeroHero;
+      'api::owner.owner': ApiOwnerOwner;
+      'api::project.project': ApiProjectProject;
+      'api::repository.repository': ApiRepositoryRepository;
+      'api::topic.topic': ApiTopicTopic;
     }
   }
 }
