@@ -1,8 +1,7 @@
-import {Suspense, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axiosInstance, {endpoints} from "../functions/axiosInstance.ts";
 import {Alert} from "../types/atoms/Alert.ts";
 import {GlobalAlert} from "../types/GlobalAlert.ts";
-import Loading from "./Loading.tsx";
 import {StrapiResponse} from "../types/StrapiResponse.ts";
 
 export default function () {

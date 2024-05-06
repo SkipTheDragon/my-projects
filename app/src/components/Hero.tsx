@@ -1,14 +1,12 @@
 import {
     Button,
     Typography,
-    Input,
 } from "@material-tailwind/react";
 import replaceStringWithColorClass from "../functions/replaceStringWithColorClass.ts";
-import {Suspense, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axiosInstance, {endpoints} from "../functions/axiosInstance.ts";
 import {StrapiResponse} from "../types/StrapiResponse.ts";
 import {Hero} from "../types/Hero.ts";
-import Loading from "./Loading.tsx";
 
 export default function () {
     const [hero, setHero] = useState<Hero | null>(null);
@@ -60,18 +58,21 @@ export default function () {
                         <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
 
                             {
-                                hero?.buttons.map((button, index) => (
-                                    button.isActive && <Button
+                                hero?.buttons?.map((button, index) => (
+                                    button.isActive &&
+                                    <a
                                         key={index}
-                                        as={"a"}
                                         href={button.url}
-                                        color={button.color}
-                                        variant={button.type}
-                                        className="w-full px-6 md:w-auto flex items-center gap-3"
                                     >
-                                        <span  dangerouslySetInnerHTML={{__html:  button.svg }}></span>
-                                        {button.content}
-                                    </Button>
+                                        <Button
+                                            color={button?.color ?? 'blue'}
+                                            variant={button?.type ?? 'filled'}
+                                            className="w-full px-6 md:w-auto flex items-center gap-3"
+                                        >
+                                            <span dangerouslySetInnerHTML={{__html: button.svg}}></span>
+                                            {button.content}
+                                        </Button>
+                                    </a>
                                 ))
                             }
                         </div>
