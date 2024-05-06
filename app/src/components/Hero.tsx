@@ -63,6 +63,7 @@ export default function () {
                                     <a
                                         key={index}
                                         href={button.url}
+                                        target="_blank"
                                     >
                                         <Button
                                             color={button?.color ?? 'blue'}

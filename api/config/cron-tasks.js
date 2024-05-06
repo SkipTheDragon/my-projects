@@ -10,7 +10,7 @@ module.exports = {
       // Add your own logic here (e.g. send a queue of email, create a database backup, etc.).
     },
     options: {
-      rule: "0 0 * * *",
+      rule: "0 */6 * * *",
     },
   },
 };
