@@ -1,4 +1,3 @@
-console.log(process.env.CORS_ALLOW_ORIGIN, ' uirl')
 module.exports = [
   'strapi::logger',
   'strapi::errors',
@@ -6,8 +5,9 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      header: '*',
+      headers: ['sentry-trace', 'baggage', '*'],
       origin: process.env.CORS_ALLOW_ORIGIN.split(',')
+
     }
   },
   'strapi::poweredBy',
