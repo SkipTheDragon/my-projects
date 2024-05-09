@@ -4,6 +4,7 @@ import {StrictMode, useEffect} from "react";
 import * as Sentry from "@sentry/react";
 import {createRoutesFromChildren, matchRoutes, RouterProvider, useLocation, useNavigationType} from "react-router-dom";
 import router from "./router";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 Sentry.init({
     dsn: import.meta.env.VITE_SENTRY_DSN,

@@ -3,20 +3,21 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import replaceStringWithColorClass from "../functions/replaceStringWithColorClass.ts";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import axiosInstance, {endpoints} from "../functions/axiosInstance.ts";
 import {StrapiResponse} from "../types/StrapiResponse.ts";
 import {Hero} from "../types/Hero.ts";
+import Skeleton from 'react-loading-skeleton'
 
 export default function () {
     const [hero, setHero] = useState<Hero | null>(null);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         axiosInstance.get<StrapiResponse<Hero>>(endpoints.HERO + '?populate=*').then(({data}) => {
             setHero(data.data.attributes);
+            setLoading(false);
         });
     }, []);
-
     return (
         <header className="bg-white " style={
             {
@@ -29,7 +30,9 @@ export default function () {
                 padding: '120px 0'
             }}>
                 <div className="container mx-auto px-4 ">
-                    {
+                    {loading ?
+                        <Skeleton count={1} height={26} width={'30%'}/>
+                        :
                         hero?.alert &&
                         hero?.alert.isActive &&
                         <Typography
@@ -39,25 +42,39 @@ export default function () {
                             {hero?.alert.content}
                         </Typography>
                     }
-                    <Typography
-                        variant="h1"
-                        color="blue-gray"
-                        className=" my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
-                        dangerouslySetInnerHTML={{
-                            __html: replaceStringWithColorClass(hero?.title ?? '')
-                        }}
-                    />
-                    <Typography
-                        variant="lead"
-                        className=" w-8/12  !text-gray-500 lg:text-lg text-base"
-                    >
-                        {hero?.description}
-                    </Typography>
+                    {loading ?
+                        <Skeleton count={2} height={55} containerClassName="block my-6 w-full lg:max-w-3xl"/>
+                        :
+                        <Typography
+                            variant="h1"
+                            color="blue-gray"
+                            className=" my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+                            dangerouslySetInnerHTML={{
+                                __html: replaceStringWithColorClass(hero?.title ?? '')
+                            }}
+                        />
+                    }
+
+                    {loading ?
+                        <Skeleton count={2} containerClassName="block w-8/12" height={28}/>
+                        :
+                        <Typography
+                            variant="lead"
+                            className="w-8/12 !text-gray-500 lg:text-lg text-base"
+                        >
+                            {hero?.description}
+                        </Typography>
+                    }
+
 
                     <div className="mt-8 grid w-full place-items-start md:justify-start">
                         <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-
-                            {
+                            {loading ?
+                                <>
+                                    <Skeleton count={1}  containerClassName="w-full md:w-[200px]" height={50}/>
+                                    <Skeleton count={1}  containerClassName="w-full md:w-[200px]" height={50}/>
+                                </>
+                                :
                                 hero?.buttons?.map((button, index) => (
                                     button.isActive &&
                                     <a

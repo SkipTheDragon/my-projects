@@ -9,12 +9,10 @@ function App() {
 
     return (
         <>
-            <Suspense fallback={<Loading/>}>
-                <Alert/>
-                <Hero/>
-                <Projects/>
-                <Footer/>
-            </Suspense>
+            <Alert/>
+            <Hero/>
+            <Projects/>
+            <Footer/>
         </>
     )
 }
