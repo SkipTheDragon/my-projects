@@ -1,8 +1,10 @@
+import {Image} from "../types/Image.ts";
+
 export type ProjectCardProps = {
     header: string,
     headline: string,
     shortDescription: string
-    thumbnail: string
+    thumbnail: Image|null
 }
 
 export default function (
@@ -15,8 +17,11 @@ export default function (
 ) {
     return (
         <div className="">
-            <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src={thumbnail}
+            {
+                thumbnail &&
+                <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src={import.meta.env.VITE_STORAGE_URL + thumbnail.formats.thumbnail.url}
                  alt="blog"/>
+            }
             <a href="#">
                 <h1 className="mx-auto mb-4 text-2xl capitalize font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{headline}</h1>
             </a>

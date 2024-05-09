@@ -26,7 +26,7 @@ export default function () {
                             <ProjectCard key={index}
                                          headline={project.headline ? project.headline.replaceAll('-', ' ') : project.repository.name}
                                          header={project.repository.full_name}
-                                         thumbnail={project.thumbnail}
+                                         thumbnail={project.thumbnail.data?.attributes}
                                          shortDescription={project.shortDescription ?? project.repository.description}/>
                         ))
                     }
