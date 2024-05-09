@@ -3,7 +3,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import replaceStringWithColorClass from "../functions/replaceStringWithColorClass.ts";
-import {Suspense, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axiosInstance, {endpoints} from "../functions/axiosInstance.ts";
 import {StrapiResponse} from "../types/StrapiResponse.ts";
 import {Hero} from "../types/Hero.ts";

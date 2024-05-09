@@ -27,7 +27,7 @@ export default function () {
             <div className="relative items-center w-full py-12 mx-auto max-w-7xl">
                 <div className="grid w-full grid-cols-1 gap-16 mx-auto lg:grid-cols-3">
                     {loading &&
-                        new Array(9).fill(0).fill(null, 0, 10).map((project, index) => (
+                        new Array(9).fill(0).map((_, index) => (
                             <ProjectCard key={index}
                                          headline={""}
                                          header={""}

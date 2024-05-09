@@ -1,1 +1,6 @@
-export type Formats = "large" | "medium" | "small" | "thumbnail"
+export enum Formats {
+    large = "large",
+    medium = "medium",
+    small = "small",
+    thumbnail = "thumbnail",
+}

@@ -6,7 +6,7 @@ export interface Image {
     createdAt: string
     ext: string
     formats: {
-        [key: Formats]: {
+        [key in Formats]: {
             ext: string,
             hash: string,
             height: number
