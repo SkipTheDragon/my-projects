@@ -1,9 +1,9 @@
-import App from './App.tsx'
 import './index.css'
 import {createRoot} from "react-dom/client";
 import {StrictMode, useEffect} from "react";
 import * as Sentry from "@sentry/react";
-import {createRoutesFromChildren, matchRoutes, useLocation, useNavigationType} from "react-router-dom";
+import {createRoutesFromChildren, matchRoutes, RouterProvider, useLocation, useNavigationType} from "react-router-dom";
+import router from "./router";
 
 Sentry.init({
     dsn: import.meta.env.VITE_SENTRY_DSN,
@@ -34,7 +34,7 @@ Sentry.init({
 });
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+    <StrictMode>
+        <RouterProvider router={router}/>
+    </StrictMode>
 )
