@@ -81,7 +81,7 @@ export default function ProjectPage() {
                     </Link>
 
                     <div className="mb-4 md:mb-0 w-full mx-auto relative">
-                        <div className="px-4 lg:px-0">
+                        <div className="">
                             {loading ?
                                 <Skeleton height={40} count={2}/>
                                 :
@@ -116,7 +116,7 @@ export default function ProjectPage() {
                         }
                     </div>
                     <section className="mt-2">
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {
                                 loading ?
                                     <Data
@@ -133,7 +133,7 @@ export default function ProjectPage() {
                                         isForked={project?.repository.fork}
                                         stargazers={project?.repository.stargazers_count}
                                         watchers={project?.repository.watchers_count}
-                                        license={project?.repository.license?.name ?? 'No license provided'}
+                                        license={project?.repository.license?.spdx_id ?? 'No license provided'}
                                         lastPush={timeAgo.format(Date.parse(project?.repository.pushedTime))}
                                     />
                             }
@@ -161,7 +161,7 @@ export default function ProjectPage() {
 
                     <ReadingMode readingMode={readingMode} setReadingMode={setReadingMode}/>
 
-                    <div className="px-4 lg:px-0 mt-8 text-gray-700 text-justify text-lg leading-relaxed w-full ">
+                    <div className=" mt-8 text-gray-700 text-justify text-lg leading-relaxed w-full ">
                         {loading ?
                             <>
                                 <Skeleton count={6}/>

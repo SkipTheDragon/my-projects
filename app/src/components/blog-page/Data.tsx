@@ -75,7 +75,7 @@ export default function Data(
 
     return (
         <div className="col-span-2">
-            <div className="p-4 border-t border-b md:border rounded-md grid grid-cols-3 gap-4 ">
+            <div className="p-4 border-t border-b md:border rounded-md grid grid-cols-2 md:grid-cols-3 gap-4 ">
                 {
                     points.map((point, index) => (
                         <div key={index}

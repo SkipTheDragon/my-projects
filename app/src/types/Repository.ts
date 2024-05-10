@@ -19,6 +19,7 @@ export interface Repository<T> {
     watchers_count: number;
     language: string;
     license: {
+        spdx_id:string
         name: string
     } | null;
     owner?: T extends true ? StrapiResponse<Owner>: Owner;

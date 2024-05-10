@@ -18,8 +18,8 @@ export default function ReadingMode(
     }, []);
 
     return (
-        <div className="w-fit mt-16">
-            <div className="flex gap-4 " role="tablist"
+        <div className="w-full md:w-fit mt-16">
+            <div className="flex gap-4 flex-col mx-auto md:flex-row" role="tablist"
                  aria-orientation="horizontal">
                 <h4 className=" flex items-center justify-center">
                     <Tooltip
