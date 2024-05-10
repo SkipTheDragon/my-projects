@@ -1,12 +1,14 @@
 import {Image} from "../types/Image.ts";
 import Skeleton from "react-loading-skeleton";
+import {Link} from "react-router-dom";
 
 export type ProjectCardProps = {
     header: string,
     headline: string,
     shortDescription: string
     thumbnail: Image | null
-    isSkeleton: boolean
+    isSkeleton: boolean,
+    slug: string
 }
 
 export default function (
@@ -15,7 +17,8 @@ export default function (
         headline,
         shortDescription,
         thumbnail,
-        isSkeleton
+        isSkeleton,
+        slug
     }: ProjectCardProps
 ) {
     return (
@@ -32,17 +35,16 @@ export default function (
             {isSkeleton ?
                 <Skeleton count={1} height={36} containerClassName="mb-4 block"/>
                 :
-                <a href="#">
-
+                <Link to={"/project/" + slug}>
                     <h1 className="mx-auto mb-4 text-2xl capitalize font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{headline}</h1>
-                </a>
+                </Link>
             }
             {isSkeleton ?
                 <Skeleton count={1} height={16} containerClassName="block mb-2 "/>
                 :
-                <a href="#" target="_blank">
+                <Link to={"/project/" + slug}>
                     <h2 className="mb-2 text-xs font-semibold tracking-widest text-blue-600 uppercase">{header}</h2>
-                </a>
+                </Link>
             }
             {isSkeleton ?
                 <Skeleton count={3} containerClassName="block"/>
@@ -53,9 +55,9 @@ export default function (
                 {isSkeleton ?
                     <Skeleton count={1} containerClassName="block w-[120px]" height={30}/>
                     :
-                    <a href="#"
-                       className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
-                       title="read more"> Read More » </a>
+                    <Link to={"/project/" + slug}
+                          className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
+                          title="read more"> Read More » </Link>
                 }
 
             </div>

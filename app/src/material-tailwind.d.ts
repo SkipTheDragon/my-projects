@@ -8,6 +8,41 @@ declare module '@material-tailwind/react' {
         children?
     }
 
+    interface CardProps {
+        placeholder?
+        onPointerEnterCapture?
+        onPointerLeaveCapture?
+        children?
+    }
+
+    interface CardBodyProps {
+        placeholder?
+        onPointerEnterCapture?
+        onPointerLeaveCapture?
+        children?
+    }
+
+    interface CardFooterProps {
+        placeholder?
+        onPointerEnterCapture?
+        onPointerLeaveCapture?
+        children?
+    }
+
+    interface IconButtonProps {
+        placeholder?
+        onPointerEnterCapture?
+        onPointerLeaveCapture?
+        children?
+    }
+
+    interface DialogProps {
+        placeholder?
+        onPointerEnterCapture?
+        onPointerLeaveCapture?
+        children?
+    }
+
     interface NavbarProps {
         placeholder?
         onPointerEnterCapture?

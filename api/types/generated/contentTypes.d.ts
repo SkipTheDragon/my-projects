@@ -943,6 +943,10 @@ export interface ApiProjectProject extends Schema.CollectionType {
     headline: Attribute.String;
     content: Attribute.Blocks;
     thumbnail: Attribute.Media;
+    slug: Attribute.UID<'api::project.project', 'headline'> &
+      Attribute.Required;
+    hrContent: Attribute.Blocks;
+    liveDemoUrl: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

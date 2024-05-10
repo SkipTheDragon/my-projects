@@ -1,10 +1,20 @@
 // Or use plain objects
 import {createBrowserRouter} from "react-router-dom";
-import App from "./App.tsx";
+import Main from "./pages/Main.tsx";
+import BlogPage from "./pages/BlogPage.tsx";
+import ErrorPage from "./pages/ErrorPage.tsx";
 
 export default createBrowserRouter([
     {
         path: "/",
-        element: <App/>
+        element: <Main/>
     },
+    {
+        path: "/project/:slug",
+        element: <BlogPage/>
+    } ,
+    {
+        path: "*",
+        element: <ErrorPage/>
+    }
 ]);

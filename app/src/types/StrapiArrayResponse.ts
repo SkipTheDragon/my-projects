@@ -7,6 +7,7 @@ export interface StrapiArrayResponse<T> {
             updatedAt: string
             publishedAt: string,
         }
+        id: number
     }[],
     meta: {
         pagination?: StrapiPagination
